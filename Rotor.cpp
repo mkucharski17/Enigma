@@ -7,6 +7,7 @@
 char Rotor1[] = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
 char Rotor2[] = "AJDKSIRUXBLHWTMCQGZNPYFVOE";
 char Rotor3[] = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
+char Reflector[] = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
 
 
 Rotor::Rotor(int rotorType) {
@@ -18,20 +19,38 @@ void Rotor::loadRotor(int rotorType) {
     switch (rotorType) {
 
         case 1 :
-            Output.loadList(Rotor1);
+            setOutput(Rotor1);
             break;
 
         case 2 :
-            Output.loadList(Rotor2);
+            setOutput(Rotor2);
             break;
 
         case 3:
-            Output.loadList(Rotor3);
+            setOutput(Rotor3);
             break;
+        case 4:
+            setOutput(Reflector);
     }
 }
 
 List<char> &Rotor::getOutput() {
     return Output;
 }
+
+void Rotor::setOutput(char *tabPtr) {
+    Output.loadList(tabPtr);
+}
+
+Rotor& Rotor::operator=(Rotor &rotor) {
+
+        Output = rotor.Output;
+
+    return *this;
+    }
+
+
+
+
+
 

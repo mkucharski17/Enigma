@@ -24,8 +24,10 @@ class List {
 
 public:
     List<Type>();
+    void loadList(Type* tabPtr);
     void showList();
     void pushBack(Type value);
+    List<Type>(List<Type> &list);
 };
 
 
@@ -36,8 +38,17 @@ List<Type>::List(){
 }
 
 template<class Type>
+
+void List<Type>::loadList(Type* tabPtr) {
+    for(int i = 0 ; tabPtr[i] != '\0'; i++)
+        pushBack(tabPtr[i]);
+
+
+}
+
+template<class Type>
 void List<Type>::showList() {
-    Node<Type> *showingNode = new Node<Type>;
+    Node<Type> *showingNode;
 
     if(head == nullptr && tail == nullptr)
         cout<<"List is empty";
@@ -45,7 +56,7 @@ void List<Type>::showList() {
     else {
         showingNode = head;
         do {
-            cout << showingNode->data<<endl;
+            cout << showingNode->data;
             showingNode = showingNode->next;
         } while (showingNode != tail->next);
 
@@ -71,6 +82,27 @@ void List<Type>::pushBack(Type value) {
     }
 }
 
+template <class Type>
+List<Type>::List(List<Type> &source) {
+
+List<Type> *tempList = new List();
+Node<Type> *tempPtr;
+tempPtr = source.head;
+
+do{
+    tempList->pushBack(tempPtr->data);
+    tempPtr = tempPtr->next;
+}while(tempPtr != source.tail->next);
+
+head = tempList->head;
+tail = tempList->tail;
+
+
+
+
+
+
+}
 
 
 

@@ -12,10 +12,12 @@ class Rotor {
     List<char> Output;
 
 public:
-    Rotor(int rotorType);
+    Rotor(int rotorType = 1);
     void loadRotor(int rotorType);
 
     List<char> &getOutput();
+    void setOutput(char* tabPtr);
+    Rotor& operator=(Rotor &rotor);
 
 };
 
