@@ -11,7 +11,7 @@ char Reflector[] = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
 
 
 Rotor::Rotor(int rotorType) {
-    loadRotor(rotorType);
+    this->loadRotor(rotorType);
 }
 
 
@@ -19,35 +19,42 @@ void Rotor::loadRotor(int rotorType) {
     switch (rotorType) {
 
         case 1 :
-            setOutput(Rotor1);
+            setCypher(Rotor1);
             break;
 
         case 2 :
-            setOutput(Rotor2);
+            setCypher(Rotor2);
             break;
 
         case 3:
-            setOutput(Rotor3);
+            setCypher(Rotor3);
             break;
         case 4:
-            setOutput(Reflector);
+            setCypher(Reflector);
     }
 }
 
-List<char> &Rotor::getOutput() {
-    return Output;
+List<char> &Rotor::getCypher() {
+    return Cypher;
 }
 
-void Rotor::setOutput(char *tabPtr) {
-    Output.loadList(tabPtr);
+void Rotor::setCypher(char *tabPtr) {
+    Cypher.loadList(tabPtr);
 }
 
 Rotor& Rotor::operator=(Rotor &rotor) {
-
-        Output = rotor.Output;
-
+        Cypher = rotor.Cypher;
     return *this;
-    }
+}
+
+Rotor::Rotor(Rotor &source) {
+    Cypher = source.Cypher;
+}
+
+void Rotor::encrypt(char &letter) {
+
+    letter = Cypher.getData(letter - 65);
+}
 
 
 

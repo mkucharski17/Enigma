@@ -20,45 +20,62 @@ template<class Type>
 
 class List {
 
-    struct Node<Type> *head, *tail;
+    struct Node<Type> *head;
 
 public:
     List<Type>();
-    void loadList(Type* tabPtr);
-    void showList();
-    void pushBack(Type value);
+
     List<Type>(List<Type> &list);
+
+    ~List<Type>();
+
+    void loadList(Type *tabPtr);
+
+    void showList();
+
+    Type& getData(int shift);
+
+    void pushBack(Type value);
+
+    List<Type>& operator=(List<Type> &source);
+
+    Node<Type>* getHead();
+
+
 };
 
 
 template<class Type>
-List<Type>::List(){
+List<Type>::List() {
     head = nullptr;
-    tail = nullptr;
 }
 
 template<class Type>
 
-void List<Type>::loadList(Type* tabPtr) {
-    for(int i = 0 ; tabPtr[i] != '\0'; i++)
-        pushBack(tabPtr[i]);
-
-
+void List<Type>::loadList(Type *tabPtr) {
+    if(head == nullptr) {
+        for (int i = 0; tabPtr[i] != '\0'; i++)
+            pushBack(tabPtr[i]);
+    }
+    else{
+        this->~List();
+        loadList(tabPtr);
+    }
 }
 
 template<class Type>
 void List<Type>::showList() {
     Node<Type> *showingNode;
 
-    if(head == nullptr && tail == nullptr)
-        cout<<"List is empty";
+    if (head == nullptr)
+        cout << "List is empty";
 
     else {
         showingNode = head;
         do {
             cout << showingNode->data;
             showingNode = showingNode->next;
-        } while (showingNode != tail->next);
+        } while (showingNode != head);
 
     }
 }
@@ -69,40 +86,82 @@ void List<Type>::pushBack(Type value) {
     newNode->data = value;
 
 
-    if(tail==nullptr && head== nullptr){
+    if (head == nullptr) {
         head = newNode;
-        tail = newNode;
         newNode->next = newNode;
-    }
-
-    else{
-        tail->next = newNode;
+    } else {
+        Node<Type> *tempPtr;
+        tempPtr = head->next;
+        while (tempPtr->next != head)
+            tempPtr = tempPtr->next;
         newNode->next = head;
-        tail = newNode;
+        tempPtr->next = newNode;
+
     }
+}
+
+template<class Type>
+List<Type>::List(List<Type> &source) {
+
+    List<Type> *tempList = new List();
+    Node<Type> *tempPtr;
+    tempPtr = source.head;
+
+    do {
+        tempList->pushBack(tempPtr->data);
+        tempPtr = tempPtr->next;
+    } while (tempPtr != source.head);
+
+    head = tempList->head;
 }
 
 template <class Type>
-List<Type>::List(List<Type> &source) {
+List<Type>& List<Type>::operator=(List<Type> &source) {
 
-List<Type> *tempList = new List();
-Node<Type> *tempPtr;
-tempPtr = source.head;
+    this->head = nullptr;
+    Node<Type> *tempPtr;
+    tempPtr = source.head;
 
-do{
-    tempList->pushBack(tempPtr->data);
-    tempPtr = tempPtr->next;
-}while(tempPtr != source.tail->next);
+    do {
+        this->pushBack(tempPtr->data);
+        tempPtr = tempPtr->next;
+    } while (tempPtr != source.head);
 
-head = tempList->head;
-tail = tempList->tail;
+    head = this->head;
+
+    return *this;
+}
+
+template <class Type>
+List<Type>::~List() {
+    Node<Type> *tempPtr = head;
+    Node<Type> *tempHead = head;
 
 
-
-
-
+    while(tempPtr != tempHead){
+        tempPtr = head;
+        head = head->next;
+        delete tempPtr;
+    }
+    delete tempPtr;
+    head = nullptr;
 
 }
+
+template <class Type>
+Node<Type>* List<Type>::getHead() {
+    return head;
+}
+
+template <class Type>
+Type& List<Type>::getData(int shift) {
+    Node<Type> *temp = head;
+    for(int i = 0 ; i != shift ; i++)
+        temp = temp->next;
+
+    return temp->data;
+}
+
 
 
 

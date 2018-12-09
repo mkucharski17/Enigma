@@ -9,20 +9,20 @@
 #include "List.h"
 
 class Rotor {
-    List<char> Output;
+    List<char> Cypher;
 
 public:
-    Rotor(int rotorType = 1);
+    Rotor(int rotorType);
+    Rotor(Rotor &source);
     void loadRotor(int rotorType);
+    void encrypt(char &letter);
+    void returnEncrpyt(char &letter);
 
-    List<char> &getOutput();
-    void setOutput(char* tabPtr);
+    List<char> &getCypher();
+    void setCypher(char* tabPtr);
     Rotor& operator=(Rotor &rotor);
 
 };
 
 
 #endif //LAB3_ROTOR_H
-//"EKMFLGDQVZNTOWYHXUSPAIBRCJ" rotor 1
-//"AJDKSIRUXBLHWTMCQGZNPYFVOE" rotor 2
-//"BDFHJLCPRTXVZNYEIWGAKMUSQO" rotor 3
