@@ -16,7 +16,7 @@ public:
     Rotor(Rotor &source);
     void loadRotor(int rotorType);
     void encrypt(char &letter);
-    void returnEncrpyt(char &letter);
+    void returnEncrypt(char &letter);
 
     List<char> &getCypher();
     void setCypher(char* tabPtr);

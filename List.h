@@ -33,6 +33,8 @@ public:
 
     void showList();
 
+    int getNumb(Type sth);
+
     Type& getData(int shift);
 
     void pushBack(Type value);
@@ -162,6 +164,18 @@ Type& List<Type>::getData(int shift) {
     return temp->data;
 }
 
+template <class Type>
+int List<Type>::getNumb(Type sth) {
+    Node<Type> *temp = head;
+    int counter = 0;
+    for(int i = 0 ; temp->data != sth ; i++){
+        temp = temp->next;
+        counter++;
+    }
+
+
+    return counter;
+}
 
 
 

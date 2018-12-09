@@ -56,6 +56,11 @@ void Rotor::encrypt(char &letter) {
     letter = Cypher.getData(letter - 65);
 }
 
+void Rotor::returnEncrypt(char &letter) {
+
+    letter = (char)(65+Cypher.getNumb(letter));
+}
+
 
 
 
