@@ -7,11 +7,13 @@
 char Rotor1[] = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
 char Rotor2[] = "AJDKSIRUXBLHWTMCQGZNPYFVOE";
 char Rotor3[] = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
+char Rotor4[] = "ESOVPZJAYQUIRHXLNFTGKDCMWB";
+char Rotor5[] = "ESOVPZJAYQUIRHXLNFTGKDCMWB";
 char Reflector[] = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
 
 
 Rotor::Rotor(int rotorType) {
-    this->loadRotor(rotorType);
+    loadRotor(rotorType);
 }
 
 
@@ -30,7 +32,15 @@ void Rotor::loadRotor(int rotorType) {
             setCypher(Rotor3);
             break;
         case 4:
+            setCypher(Rotor4);
+            break;
+        case 5:
+            setCypher(Rotor5);
+            break;
+        case 6:
             setCypher(Reflector);
+            break;
+
     }
 }
 
@@ -42,8 +52,8 @@ void Rotor::setCypher(char *tabPtr) {
     Cypher.loadList(tabPtr);
 }
 
-Rotor& Rotor::operator=(Rotor &rotor) {
-        Cypher = rotor.Cypher;
+Rotor &Rotor::operator=(Rotor &rotor) {
+    Cypher = rotor.Cypher;
     return *this;
 }
 
@@ -58,7 +68,7 @@ void Rotor::encrypt(char &letter) {
 
 void Rotor::returnEncrypt(char &letter) {
 
-    letter = (char)(65+Cypher.getNumb(letter));
+    letter = (char) (65 + Cypher.getNumb(letter));
 }
 
 

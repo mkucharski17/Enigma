@@ -13,14 +13,20 @@ class Rotor {
 
 public:
     Rotor(int rotorType);
+
     Rotor(Rotor &source);
+
     void loadRotor(int rotorType);
+
     void encrypt(char &letter);
+
     void returnEncrypt(char &letter);
 
     List<char> &getCypher();
-    void setCypher(char* tabPtr);
-    Rotor& operator=(Rotor &rotor);
+
+    void setCypher(char *tabPtr);
+
+    Rotor &operator=(Rotor &rotor);
 
 };
 
