@@ -35,13 +35,13 @@ public:
 
     int getNumb(Type sth);
 
-    Type& getData(int shift);
+    Type &getData(int shift);
 
     void pushBack(Type value);
 
-    List<Type>& operator=(List<Type> &source);
+    List<Type> &operator=(List<Type> &source);
 
-    Node<Type>* getHead();
+    Node<Type> *getHead();
 
 
 };
@@ -55,11 +55,10 @@ List<Type>::List() {
 template<class Type>
 
 void List<Type>::loadList(Type *tabPtr) {
-    if(head == nullptr) {
+    if (head == nullptr) {
         for (int i = 0; tabPtr[i] != '\0'; i++)
             pushBack(tabPtr[i]);
-    }
-    else{
+    } else {
         this->~List();
         loadList(tabPtr);
     }
@@ -117,8 +116,8 @@ List<Type>::List(List<Type> &source) {
     head = tempList->head;
 }
 
-template <class Type>
-List<Type>& List<Type>::operator=(List<Type> &source) {
+template<class Type>
+List<Type> &List<Type>::operator=(List<Type> &source) {
 
     this->head = nullptr;
     Node<Type> *tempPtr;
@@ -134,13 +133,13 @@ List<Type>& List<Type>::operator=(List<Type> &source) {
     return *this;
 }
 
-template <class Type>
+template<class Type>
 List<Type>::~List() {
     Node<Type> *tempPtr = head;
     Node<Type> *tempHead = head;
 
 
-    while(tempPtr != tempHead){
+    while (tempPtr != tempHead) {
         tempPtr = head;
         head = head->next;
         delete tempPtr;
@@ -150,25 +149,25 @@ List<Type>::~List() {
 
 }
 
-template <class Type>
-Node<Type>* List<Type>::getHead() {
+template<class Type>
+Node<Type> *List<Type>::getHead() {
     return head;
 }
 
-template <class Type>
-Type& List<Type>::getData(int shift) {
+template<class Type>
+Type &List<Type>::getData(int shift) {
     Node<Type> *temp = head;
-    for(int i = 0 ; i != shift ; i++)
+    for (int i = 0; i != shift; i++)
         temp = temp->next;
 
     return temp->data;
 }
 
-template <class Type>
+template<class Type>
 int List<Type>::getNumb(Type sth) {
     Node<Type> *temp = head;
     int counter = 0;
-    for(int i = 0 ; temp->data != sth ; i++){
+    for (int i = 0; temp->data != sth; i++) {
         temp = temp->next;
         counter++;
     }
@@ -176,9 +175,6 @@ int List<Type>::getNumb(Type sth) {
 
     return counter;
 }
-
-
-
 
 
 #endif //LAB3_LIST_H
