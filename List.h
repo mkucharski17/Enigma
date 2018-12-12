@@ -139,7 +139,7 @@ List<Type>::~List() {
     Node<Type> *tempHead = head;
 
 
-    while (tempPtr != tempHead) {
+    while (tempPtr->next != tempHead) {
         tempPtr = head;
         head = head->next;
         delete tempPtr;
