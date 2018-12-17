@@ -17,7 +17,7 @@ class Plugboard {
     List<Pair> plugboardChanges;
 
 public:
-    Plugboard(string letterPairs);
+    Plugboard(string &letterPairs);
 
     List<Pair> &getPlugBoardChnages();
 

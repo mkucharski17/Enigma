@@ -5,7 +5,7 @@
 
 #include "Plugboard.h"
 
-Plugboard::Plugboard(string letterPairs) {
+Plugboard::Plugboard(string &letterPairs) {
     makePlugboard(letterPairs);
 }
 
@@ -31,6 +31,7 @@ void Plugboard::switchLetter(char &letter) {
         else if (letter == temp->data.second)
             letter = temp->data.first;
         temp = temp->next;
+
     }
 }
 
