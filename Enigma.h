@@ -14,17 +14,22 @@ class Enigma {
     Rotor *rotors[3];
     Rotor *reflector;
     Plugboard *plugboard;
+    int counters[3];
 
 
 public:
 
-    Enigma(int *tabPtr, string plugboardSettings);
+    Enigma(int *tabPtr, string &plugboardSettings, string &rotorsSettings);
 
     void makeEncyrption(char &letter);
 
     void go(string &order);
 
-    Plugboard* getPlugboard();
+    Plugboard *getPlugboard();
+
+    void rotate();
+
+    void setRotors(string rotorsSettings);
 
 
 };
