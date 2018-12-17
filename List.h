@@ -43,6 +43,8 @@ public:
 
     Node<Type> *getHead();
 
+    void moveHead();
+
 
 };
 
@@ -174,6 +176,11 @@ int List<Type>::getNumb(Type sth) {
 
 
     return counter;
+}
+
+template<class Type>
+void List<Type>::moveHead() {
+    head = head->next;
 }
 
 

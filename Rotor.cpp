@@ -71,8 +71,6 @@ void Rotor::returnEncrypt(char &letter) {
     letter = (char) (65 + Cypher.getNumb(letter));
 }
 
-
-
-
-
-
+void Rotor::moveRotor() {
+    Cypher.moveHead();
+}

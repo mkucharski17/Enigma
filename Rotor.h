@@ -10,9 +10,10 @@
 
 class Rotor {
     List<char> Cypher;
+    int counter = 0;
 
 public:
-    Rotor(int rotorType);
+    explicit Rotor(int rotorType);
 
     Rotor(Rotor &source);
 
@@ -27,6 +28,8 @@ public:
     void setCypher(char *tabPtr);
 
     Rotor &operator=(Rotor &rotor);
+
+    void moveRotor();
 
 };
 
