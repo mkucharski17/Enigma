@@ -74,3 +74,5 @@ void Rotor::returnEncrypt(char &letter) {
 void Rotor::moveRotor() {
     Cypher.moveHead();
 }
+
+
