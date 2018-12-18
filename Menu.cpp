@@ -10,7 +10,7 @@ using namespace std;
 
 Menu::Menu() {
     int choice = 1;
-    cout << "WELCOME IN ENIGMA SIMULATOR " << endl << endl;
+    cout << "WELCOME IN ENIGMA SIMULATOR ";
     while (choice != 0) {
         cout << endl << "Choose one from following options" << endl << "Run tests - 1" << endl << "Encrypt text- 2"
              << endl
@@ -21,6 +21,7 @@ Menu::Menu() {
 
             case 1 :
                 test = new Test();
+                test->runTests();
                 break;
 
             case 2:
@@ -31,7 +32,6 @@ Menu::Menu() {
                 choice = 0;
         }
     }
-
 }
 
 void Menu::enryptMenu() {

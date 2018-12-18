@@ -57,9 +57,6 @@ Rotor &Rotor::operator=(Rotor &rotor) {
     return *this;
 }
 
-Rotor::Rotor(Rotor &source) {
-    Cypher = source.Cypher;
-}
 
 void Rotor::encrypt(char &letter) {
 

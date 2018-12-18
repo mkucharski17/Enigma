@@ -16,13 +16,15 @@ class Menu {
     string order;
     bool alreadyUse = false;
 
-public:
-    Menu();
     void enryptMenu();
     void getInformation();
     void getOrder();
     void save();
     void load();
+
+public:
+    Menu();
+
 
 
 };

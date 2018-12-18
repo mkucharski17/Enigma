@@ -5,7 +5,7 @@
 #include "Test.h"
 #include "Rotor.h"
 
-Test::Test() {
+void Test::runTests() {
     plugboardSetTest();
     rotorsSetTest();
     rotorMoveTest();
@@ -14,7 +14,6 @@ Test::Test() {
     EncytpTest();
 
 }
-
 
 void Test::rotorLoadTest() {
     char Rotor4[] = "ESOVPZJAYQUIRHXLNFTGKDCMWB";

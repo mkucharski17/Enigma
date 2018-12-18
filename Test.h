@@ -10,15 +10,16 @@
 
 class Test {
     Enigma *E;
-
-public:
-    Test();
     void rotorLoadTest();
     void rotorMoveTest();
     void plugboardSetTest();
     void rotorsSetTest();
     void plugboardSwitchTest();
     void EncytpTest();
+
+public:
+    void runTests();
+
 
 };
 

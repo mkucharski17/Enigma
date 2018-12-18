@@ -10,12 +10,9 @@
 
 class Rotor {
     List<char> Cypher;
-    int counter = 0;
 
 public:
-    explicit Rotor(int rotorType);
-
-    Rotor(Rotor &source);
+    Rotor(int rotorType);
 
     void loadRotor(int rotorType);
 
