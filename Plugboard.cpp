@@ -24,14 +24,14 @@ void Plugboard::makePlugboard(string letterPairs) {
 
 void Plugboard::switchLetter(char &letter) {
     Node<Pair> *temp = plugboardChanges.getHead();
-    while (temp->next != plugboardChanges.getHead()) {
+    do {
         if (letter == temp->data.first)
             letter = temp->data.second;
 
         else if (letter == temp->data.second)
             letter = temp->data.first;
-        temp = temp->next;
 
-    }
+        temp = temp->next;
+    } while (temp != plugboardChanges.getHead());
 }
 
