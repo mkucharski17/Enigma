@@ -12,7 +12,8 @@ Menu::Menu() {
     int choice = 1;
     cout << "WELCOME IN ENIGMA SIMULATOR " << endl << endl;
     while (choice != 0) {
-        cout<<endl<< "Choose one from following options" << endl << "Run tests - 1" << endl << "Encrypt text- 2" << endl
+        cout << endl << "Choose one from following options" << endl << "Run tests - 1" << endl << "Encrypt text- 2"
+             << endl
              << "Exit - 0 ";
         cin >> choice;
 
@@ -39,10 +40,10 @@ void Menu::enryptMenu() {
     getOrder();
     while (choice != 0) {
 
-        cout<<endl << "Choose, what do you want to do now: " << endl << "Encrypt - 1" << endl;
+        cout << endl << "Choose, what do you want to do now: " << endl << "Encrypt - 1" << endl;
         if (alreadyUse) {
-            cout << " Decrypt - 2 " << endl
-                 << "Show text - 3" << endl << "Save encrypted text - 4";
+            cout << "Decrypt - 2 " << endl
+                 << "Show text - 3" << endl << "Save encrypted text - 4"<<endl;
         }
         cout << "Exit - 0";
         cin >> choice;
@@ -79,17 +80,17 @@ void Menu::getInformation() {
     string rotorsSettings, plugboardSettings;
     int rotorsTypes[3];
 
-    cout << "Type three rotors (1-5) which you want to use in your Enigma: "<<endl;
+    cout << "Type three rotors (1-5) which you want to use in your Enigma: " << endl;
     for (int i = 0; i < 3; i++) {
-        cout<<"rotor "<<i+1<<": ";
+        cout << "rotor " << i + 1 << ": ";
         cin >> rotorsTypes[i];
     }
     cout << "Type pairs of letters which you want to exchange in plugboard. For example ABCD means A and B is one pair"
          << "and C and D is another pair: ";
     cin >> plugboardSettings;
 
-    cout<<"Write how you want to set rotors at the beginning, sequence of rotors is like when choosing types ";
-    cin>>rotorsSettings;
+    cout << "Write how you want to set rotors at the beginning, sequence of rotors is like when choosing types ";
+    cin >> rotorsSettings;
 
 
     enigma = new Enigma(rotorsTypes, plugboardSettings, rotorsSettings);
@@ -111,8 +112,8 @@ void Menu::getOrder() {
 
 void Menu::save() {
     fstream file;
-    file.open("info", ios::out);
-    file << order;
+    file.open("save.txt", ios::out);
+    file << order << endl;
     file.close();
 }
 
