@@ -31,6 +31,8 @@ public:
 
     void setRotors(string rotorsSettings);
 
+    Rotor *getRotor(int number);
+
 
 };
 

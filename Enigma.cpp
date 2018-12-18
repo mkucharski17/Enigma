@@ -71,6 +71,18 @@ void Enigma::setRotors(string rotorsSettings) {
     }
 }
 
+Rotor *Enigma::getRotor(int number) {
+    switch (number) {
+        case 0:
+            return rotors[0];
+        case 1:
+            return rotors[1];
+        case 2:
+            return rotors[2];
+
+    }
+}
+
 
 
 
