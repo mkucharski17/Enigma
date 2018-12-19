@@ -10,10 +10,9 @@ using namespace std;
 
 Menu::Menu() {
     int choice = 1;
-    cout << "WELCOME IN ENIGMA SIMULATOR ";
+    cout << "WELCOME IN ENIGMA SIMULATOR "<<endl;
     while (choice != 0) {
-        cout << endl << "Choose one from following options" << endl << "Run tests - 1" << endl << "Encrypt text- 2"
-             << endl
+        cout<< endl << "Choose one from following options: " << endl << "Run tests - 1" << endl << "Encrypt text- 2"<<endl
              << "Exit - 0 ";
         cin >> choice;
 
@@ -41,22 +40,23 @@ void Menu::enryptMenu() {
     while (choice != 0) {
 
         cout << endl << "Choose, what do you want to do now: " << endl << "Encrypt - 1" << endl;
-        if (alreadyUse) {
-            cout << "Decrypt - 2 " << endl
-                 << "Show text - 3" << endl << "Save encrypted text - 4"<<endl;
-        }
-        cout << "Exit - 0";
+
+        if (encrypted)
+            cout << "Decrypt - 2 " << endl;
+
+        cout << "Show text - 3" << endl << "Save text - 4" << endl << "Exit - 0";
         cin >> choice;
 
         switch (choice) {
 
             case 1 :
                 enigma->go(order);
-                alreadyUse = true;
+                encrypted = true;
                 break;
 
             case 2:
                 decryptingEnigma->go(order);
+                encrypted = false;
                 break;
 
             case 3:
@@ -85,7 +85,7 @@ void Menu::getInformation() {
         cout << "rotor " << i + 1 << ": ";
         cin >> rotorsTypes[i];
     }
-    cout << "Type pairs of letters which you want to exchange in plugboard. For example ABCD means A and B is one pair"
+    cout << "Type pairs of letters which you want to exchange in plugboard. For example ABCD means A and B is one pair "
          << "and C and D is another pair: ";
     cin >> plugboardSettings;
 

@@ -14,7 +14,7 @@ class Menu {
     Enigma *decryptingEnigma;
     Test *test;
     string order;
-    bool alreadyUse = false;
+    bool encrypted = false;
 
     void enryptMenu();
     void getInformation();
