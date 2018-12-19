@@ -9,6 +9,7 @@
 #include "Enigma.h"
 
 class Test {
+    bool error = false;
     Enigma *E;
     void rotorLoadTest();
     void rotorMoveTest();

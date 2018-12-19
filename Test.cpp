@@ -13,6 +13,8 @@ void Test::runTests() {
     plugboardSwitchTest();
     EncytpTest();
 
+    if(!error)
+        cout<<", so everything is ok";
 }
 
 void Test::rotorLoadTest() {
@@ -24,6 +26,7 @@ void Test::rotorLoadTest() {
         if (temp->data == Rotor4[i])
             temp = temp->next;
         else {
+            error = true;
             cout << "something goes wrong in rotor's loading" << endl;
             break;
         }
@@ -41,6 +44,7 @@ void Test::rotorMoveTest() {
         if (r->getCypher().getHead()->data == Rotor5[i])
             r->moveRotor();
         else {
+            error = true;
             cout << "something goes wrong in rotor's Moving" << endl;
             break;
         }
@@ -59,6 +63,7 @@ void Test::plugboardSetTest() {
         if (temp->data.first == plug[i] && temp->data.second == plug[i + 1])
             temp = temp->next;
         else {
+            error = true;
             cout << "something goes wrong in setting plugboard" << endl;
         }
 
@@ -77,6 +82,7 @@ void Test::rotorsSetTest() {
         if (tempRotors[i]->getCypher().getHead()->data == rotorsSettings[i])
             continue;
         else {
+            error = true;
             cout << "something goes wrong in setting rotors" << endl;
         }
     }
@@ -91,6 +97,7 @@ void Test::plugboardSwitchTest() {
     if (example == "ZEIGCPINTXXGWZG")
         cout << "plugboard switching is ok" << endl;
     else {
+        error = true;
         cout << "something goes wrong in switching letters with plugboard" << endl;
     }
 }
@@ -108,6 +115,7 @@ void Test::EncytpTest() {
     if (example == "ENCRYTINGXTEST")
         cout << "encytping and decrypting is ok" << endl;
     else {
+        error = true;
         cout << "something goes wrong in encrypting or decrypting " << endl;
     }
 
